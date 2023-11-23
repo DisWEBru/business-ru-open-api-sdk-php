@@ -1,8 +1,8 @@
-# open-api-sdk-php
+# business-ru-open-api-sdk-php
 
 ## О проекте
 
-Данная библиотека предназначена для работы с Open API.
+Данная библиотека предназначена для работы с Open API. Вношу правки для работы на более поздних версиях библиотек.
 
 ## Требования
 
@@ -12,7 +12,7 @@
 ## Установка
 
 ```
-composer require business-ru/open-api-sdk-php
+composer require diswebru/business-ru-open-api-sdk-php
 ```
 
 Документация: https://app.swaggerhub.com/apis/Business.Ru/check.business.ru/
@@ -26,12 +26,12 @@ composer require business-ru/open-api-sdk-php
 # Подключаем автозагрузку
 require_once __DIR__ . '/../vendor/autoload.php';
 # Подключаем библиотеку Open Api Client
-require_once __DIR__ . '/../vendor/business-ru/open-api-sdk-php/src/OpenClient.php';
+require_once __DIR__ . '/../vendor/diswebru/business-ru-open-api-sdk-php/src/OpenClient.php';
 # Создание экземпляра класса
 $openApiClient = new OpenClient($this->account_url,$this->appID,$this->secret_key);
 # Пример ссылки
 # ФФД /v1/ - 1.05 /v2/ - 1.2
-$this->account_url - "https://base-url/open-api/v2/"
+$this->account_url - "https://check.business.ru/open-api/v1/"
 ```
 
 ### Примеры использования
