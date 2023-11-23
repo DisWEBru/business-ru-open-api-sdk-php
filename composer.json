@@ -21,7 +21,7 @@
     "ext-json": "*",
     "symfony/http-client": "^6.2",
     "psr/simple-cache": "^3.0",
-    "psr/log": "^1.0",
+    "psr/log": "^3.0",
     "monolog/monolog": "^2.6"
   },
   "autoload": {
