@@ -4,7 +4,9 @@ namespace Open\Api\Adapter\IlluminateOpenApi\Log;
 
 use Monolog\Formatter\LogstashFormatter;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use Monolog\Logger as MonologLogger;
+use Monolog\LogRecord;
 use Open\Api\Adapter\IlluminateOpenApi\Interfaces\LogInterface;
 use Open\Api\Exception\SimpleLogException;
 use Psr\Log\InvalidArgumentException;
@@ -28,14 +30,14 @@ class Logger implements LogInterface
      * @var array
      */
     protected array $levels = [
-        'debug' => MonologLogger::DEBUG,
-        'info' => MonologLogger::INFO,
-        'notice' => MonologLogger::NOTICE,
-        'warning' => MonologLogger::WARNING,
-        'error' => MonologLogger::ERROR,
-        'critical' => MonologLogger::CRITICAL,
-        'alert' => MonologLogger::ALERT,
-        'emergency' => MonologLogger::EMERGENCY,
+        'debug' => Level::Debug,
+        'info' => Level::Info,
+        'notice' => Level::Notice,
+        'warning' => Level::Warning,
+        'error' => Level::Error,
+        'critical' => Level::Critical,
+        'alert' => Level::Alert,
+        'emergency' => Level::Emergency,
     ];
 
     /**
@@ -97,13 +99,13 @@ class Logger implements LogInterface
         $logger = $this->logger;
 
         $formatter = new LogstashFormatter('OpenApiSDK');
-        $record = [
-            'level_name' => $level,
-            'level' => $this->level(['level' => $level]),
-            'channel' => 'daily',
-            'message' => $message,
-            'context' => $context
-        ];
+        $record = new LogRecord(
+            new \DateTimeImmutable(),
+            'daily',
+            Level::fromName($level),
+            $message,
+            $context
+        );
         $formatter->format($record);
         $logFileDaily = $level . '-' . date("Y-m-d");
         $handler = new StreamHandler($this->logPath . "/$logFileDaily.log", $this->level(['level' => $level]));

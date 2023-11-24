@@ -8,6 +8,10 @@
 
 * PHP 7.4 и выше
 * PHP extension cURL
+* symfony/http-client ^6.2
+* psr/simple-cache ^3.0
+* psr/log ^3.0
+* monolog/monolog ^3.3
 
 ## Установка
 

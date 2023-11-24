@@ -37,7 +37,7 @@ final class SimpleFileCache implements CacheInterface
      * @return false|string
      * @throws SimpleFileCacheException
      */
-    public function get($key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         if (!is_string($key)) {
             throw new SimpleFileCacheException('Ключ должен быть строкой');
@@ -98,24 +98,28 @@ final class SimpleFileCache implements CacheInterface
         return false;
     }
 
-    public function clear()
+    public function clear(): bool
     {
         // TODO: Implement clear() method.
+        return true;
     }
 
-    public function getMultiple($keys, $default = null)
+    public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
         // TODO: Implement getMultiple() method.
+        return [];
     }
 
-    public function setMultiple($values, $ttl = null)
+    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
         // TODO: Implement setMultiple() method.
+        return true;
     }
 
-    public function deleteMultiple($keys)
+    public function deleteMultiple(iterable $keys): bool
     {
         // TODO: Implement deleteMultiple() method.
+        return true;
     }
 
     /**
